@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поздравление с 8 марта</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #ffb6c1;
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 36px;
+            color: #fff;
+        }
+        .section {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .section h2 {
+            font-size: 28px;
+            color: #ff66b2;
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: #ff66b2;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background-color: #ff3385;
+        }
+        .content {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .content input {
+            font-size: 18px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        /* Стиль для всплывающего окна */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 400px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Анеля поздравляю тебя с 8 марта 
+        и по этому хотел бы сделать для тебя небольшой!</h1>
+</header>
+
+<div class="section" id="section1">
+    <h2>Почему Анеля такая красивая?</h2>
+    <p class="content">Чтобы открыть этот раздел, нужно пройти небольшое задание:</p>
+    <p class="content">Сколько будет 5 + 3?</p>
+    <input type="number" id="answer1" placeholder="Введите ответ">
+    <button class="btn" onclick="checkAnswer1()">Проверить</button>
+    <p id="result1"></p>
+</div>
+
+<div class="section" id="section2" style="display: none;">
+    <h2>Почему Анеля такая веселая?</h2>
+    <p class="content">Чтобы открыть этот раздел, введите код:</p>
+    <input type="text" id="code" placeholder="Введите код">
+    <button class="btn" onclick="checkCode()">Проверить</button>
+    <p id="result2"></p>
+</div>
+
+<div class="section" id="section3" style="display: none;">
+    <h2> Пару приятных слов от Ибрашки)</h2>
+    <p class="content">Чтобы открыть этот раздел, введите секретное слово:</p>
+    <input type="text" id="secretWord" placeholder="Введите секретное слово">
+    <button class="btn" onclick="checkSecretWord()">Проверить</button>
+    <p id="result3"></p>
+</div>
+
+<!-- Всплывающее окно -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <p id="modalText"></p>
+    </div>
+</div>
+
+<script>
+    // Функция для проверки первого ответа
+    function checkAnswer1() {
+        var answer = document.getElementById('answer1').value;
+        if (answer == 8) {
+            showModal("Анеля ты красива, потому что твоя душа полна света и доброты!");
+            document.getElementById('section2').style.display = "block"; // Показать второй раздел
+        } else {
+            document.getElementById('result1').textContent = "Неправильный ответ. Попробуйте ещё раз.";
+        }
+    }
+
+    // Функция для проверки кода
+    function checkCode() {
+        var code = document.getElementById('code').value;
+        if (code == "1452") {
+            showModal("Анеля ты такая веселая, потому что её сердце наполнено радостью и она всегда готова поделиться ею!");
+            document.getElementById('section3').style.display = "block"; // Показать третий раздел
+        } else {
+            document.getElementById('result2').textContent = "Неправильный код. Попробуйте ещё раз.";
+        }
+    }
+
+    // Функция для проверки секретного слова
+    function checkSecretWord() {
+        var secretWord = document.getElementById('secretWord').value;
+        if (secretWord.toLowerCase() === "красота") {
+            showModal("Дорогая Анела, Каждый раз, когда я думаю о тебе, сердце начинает биться быстрее, а мир вокруг становится ярче. Ты как свет, который освещает мои самые тёмные дни. Твоя улыбка, твои глаза, твоя доброта — всё в тебе заставляет меня чувствовать себя живым, как никогда. Ты — моя муза, вдохновение и самая настоящая радость.Я хочу быть рядом с тобой, поддерживать и заботиться о тебе, разделять с тобой каждый момент этой жизни. Ты стала для меня чем-то гораздо большим, чем просто красивой девушкой. Ты — моя мечта, моя сила и моя нежность.Надеюсь, что смогу стать тем, кто будет рядом с тобой в самые важные моменты, и быть тем, кто заслужит твою любовь.С любовью,Ибрашка!");
+        } else {
+            document.getElementById('result3').textContent = "Неправильное слово. Попробуйте ещё раз.";
+        }
+    }
+
+    // Функция для показа всплывающего окна с текстом
+    function showModal(text) {
+        var modal = document.getElementById("myModal");
+        var modalText = document.getElementById("modalText");
+        modalText.textContent = text;
+        modal.style.display = "block";
+    }
+
+    // Функция для закрытия модального окна
+    function closeModal() {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";
+    }
+
+    // Закрытие модального окна при клике вне области окна
+    window.onclick = function(event) {
+        var modal = document.getElementById("myModal");
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
+</body>
+</html>
